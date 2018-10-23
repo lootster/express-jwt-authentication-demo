@@ -69,7 +69,7 @@ describe("Unique fields in User model", () => {
     );
   });
 
-  it("should not allow two users with the email", async () => {
+  it("should not allow two users with the same email", async () => {
     let userWithSameEmail = new User({ username: username2, email: email1 });
     await expect(userWithSameEmail.save()).rejects.toThrow(
       "email: should be unique"
@@ -109,7 +109,7 @@ describe("Some fields in User model are case insensitive", () => {
   });
 });
 
-// Test cases for some of the fields in User model are required
+// Test cases to check some fields are mandatory when creating a new User model
 describe("Some of the fields in User model are required", () => {
   const username1 = "peter";
   const email1 = "peter@example.com";
@@ -133,6 +133,7 @@ describe("Some of the fields in User model are required", () => {
   });
 });
 
+// Test cases for setting user password
 describe("Setting and validation of password field on User model", () => {
   const username = "kate";
   const email = "kate@example.com";
