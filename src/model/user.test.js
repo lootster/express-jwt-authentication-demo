@@ -1,4 +1,4 @@
-const ValidationError = require("mongoose").ValidationError;
+//const ValidationError = require("mongoose").ValidationError;
 const test_mongodb = require("../../test_helper/in_memory_mongodb_setup");
 
 beforeAll(test_mongodb.setup);
@@ -160,7 +160,7 @@ describe("Setting and validation of password field on User model", () => {
     expect(user.validPassword(password)).toBeTruthy();
   });
 });
-
+// Test cases for JWT tokens
 describe("JWT tokens", () => {
   const username = "jeff";
   const email = "jeff@example.com";
