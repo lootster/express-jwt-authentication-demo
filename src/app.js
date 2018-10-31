@@ -8,6 +8,8 @@ const express = require("express"),
   morgan = require("morgan"),
   logger = require("./logger");
 
+const { passport } = require("./middleware/passport_middleware");
+
 const isProduction = process.env.NODE_ENV === "production";
 
 const app = express();
@@ -15,8 +17,14 @@ const app = express();
 // middlewares
 app.use(cors());
 app.use(morgan("dev"));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(
+  bodyParser.urlencoded({
+    extended: false
+  })
+);
 app.use(bodyParser.json());
+app.use(passport.initialize());
+
 if (process.env.NODE_ENV === "development") {
   app.use(errorhandler());
 }
